@@ -422,16 +422,16 @@ def process_remove_bg(params, image, bg, is_json_or_www_encoded=False):
     h, w = image.size
     if h < 2 or w < 2:
         return error_dict("Image is too small. Minimum size 2x2"), 400
-    if "size" in params.keys():
-        value = params["size"]
-        if value == "preview" or value == "small" or value == "regular":
-            image.thumbnail((625, 400), resample=Image.ANTIALIAS)  # 0.25 mp
-        elif value == "medium":
-            image.thumbnail((1504, 1000), resample=Image.ANTIALIAS)  # 1.5 mp
-        elif value == "hd":
-            image.thumbnail((2000, 2000), resample=Image.ANTIALIAS)  # 2.5 mp
-        else:
-            image.thumbnail((6250, 4000), resample=Image.ANTIALIAS)  # 25 mp
+    # if "size" in params.keys():
+        # value = params["size"]
+        # if value == "preview" or value == "small" or value == "regular":
+        #     image.thumbnail((625, 400), resample=Image.ANTIALIAS)  # 0.25 mp
+        # elif value == "medium":
+        #     image.thumbnail((1504, 1000), resample=Image.ANTIALIAS)  # 1.5 mp
+        # elif value == "hd":
+        #     image.thumbnail((2000, 2000), resample=Image.ANTIALIAS)  # 2.5 mp
+        # else:
+        #     image.thumbnail((6250, 4000), resample=Image.ANTIALIAS)  # 25 mp
 
     roi_box = [0, 0, image.size[0], image.size[1]]
     if "type" in params.keys():
